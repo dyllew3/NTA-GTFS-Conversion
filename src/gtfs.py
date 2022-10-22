@@ -194,9 +194,14 @@ def load_gtfs_from_file(filename: str, obj_type: T) -> List[T]:
 
     Throws:
         Exception:  When it encounters an error parsing csv file it logs it then throws exception.
+        ValueError: When incorrect parameters are given.
     Returns:
         List of objects.
     """
+    if filename is None or filename == "":
+        raise ValueError("Filename must not be blank")
+    if obj_type is None:
+        raise ValueError("Must give a non None value for object type")
     try:
         results: List[T] = []
         with open(filename, 'r', encoding="utf-8-sig") as csvfile:
