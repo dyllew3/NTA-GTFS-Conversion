@@ -1,8 +1,7 @@
 import csv
 import unittest
 from .. import gtfs
-from unittest import mock
-from unittest.mock import MagicMock, Mock, patch, mock_open
+from unittest.mock import Mock, patch, mock_open
 
 
 class GTFS_Tests(unittest.TestCase):

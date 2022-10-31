@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, TypeVar
+from typing import Dict, List, TypeVar
 from .gtfs import *
 
 T = TypeVar('T')
@@ -17,7 +17,7 @@ def group_by(field: str, obj_list: List[T]) -> Dict[str, List[T]]:
     result: Dict[str, List[T]] = {}
     for obj in obj_list:
         if field not in obj.__dict__:
-            logging.warning(f"Field not found in obj {type(obj)}")
+            logging.warning(f"Field {field} not found in obj {type(obj)}")
             continue
         value: str = obj.__dict__[field]
         if value not in result:

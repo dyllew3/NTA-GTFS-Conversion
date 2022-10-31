@@ -3,7 +3,7 @@ import logging
 import requests
 import zipfile
 
-def download_GTFS_zip(zip_url: str, directory: str = ".\\input") -> str:
+def download_GTFS_zip(zip_url: str, directory: str = ".\\GTFS") -> str:
     """Download and extract the GTFS files from a zip file at the
     specified url.
 
