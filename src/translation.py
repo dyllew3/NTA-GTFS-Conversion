@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, TypeVar
+from typing import Dict, List, TypeVar
 from .gtfs import *
 
 T = TypeVar('T')
@@ -17,7 +17,7 @@ def group_by(field: str, obj_list: List[T]) -> Dict[str, List[T]]:
     result: Dict[str, List[T]] = {}
     for obj in obj_list:
         if field not in obj.__dict__:
-            logging.warning(f"Field not found in obj {type(obj)}")
+            logging.warning(f"Field {field} not found in obj {type(obj)}")
             continue
         value: str = obj.__dict__[field]
         if value not in result:
@@ -27,7 +27,7 @@ def group_by(field: str, obj_list: List[T]) -> Dict[str, List[T]]:
 
 
 def connect_route_stops(routes: List[Route], stop_times: List[StopTime],
-                        trips: List[Trip]) -> List[Any]:
+                        trips: List[Trip]):
     """Connect trip stops to the route they are associated with.
 
     Parameters:
@@ -45,5 +45,7 @@ def connect_route_stops(routes: List[Route], stop_times: List[StopTime],
     for trip in trips:
         trip_stops = [x.__dict__ for x in times_by_trip_id[trip.trip_id]]
         route_list = [x.__dict__ for x in route_ids[trip.route_id]]
-        results.append({"stops": trip_stops, "route": route_list})
+        if len(route_list) > 1:
+            logging.warning(f"route list for trip {trip} is bigger than 1")
+        results.append({"stops": trip_stops, "route": route_list[0]})
     return results
