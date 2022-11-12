@@ -33,6 +33,3 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
-      - name: Getting the coverage of unit tests
-        run: |
-          python -m coverage report -m --omit="*/tests*"
