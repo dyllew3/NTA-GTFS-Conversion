@@ -1,6 +1,5 @@
 import unittest
-from .. import translation
-from .. import gtfs
+from src import gtfs, translation
 
 class Translation_Tests(unittest.TestCase):
     def test_group_by_invalid_field(self):

@@ -4,11 +4,14 @@ Takes data from the NTA https://www.transportforireland.ie/transitData/PT_Data.h
 stop times to the route they belong to.
 
 ## Running
+
 First you will need python 3 to be installed.
 Then it should be as simple as running
+
 ```shell
 python main.py {input_folder} {output_folder}
 ```
+
 Where input_folder is where all the GTFS txt files are present,
 output_folder is where all the json output will go.
 It should parse the GTFS txt files into corresponding python objects
@@ -21,11 +24,18 @@ The module they are testing should be in the form test_{module_name}.py
 When running tests can run them all at once with command:
 
 ```shell
-python -m unittest
+python -m pytest
 ```
 
 If you want to run a specific module you will need to something in the form
 
 ```shell
- python -m unittest -v src.tests.{module_path}
+ pytest tests.{module_path}
+```
+
+Also for coverage I make use of coverage.py https://coverage.readthedocs.io/en/6.5.0/
+Using the following command to run the tests while also excluding the test folders from the coverage check
+
+```shell
+coverage report -m  --omit="*/tests*"
 ```
