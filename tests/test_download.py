@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock, patch, mock_open
-from .. import download
+from src import download
 from . import utils
 import os
 DIRECTORY = os.path.dirname(os.path.realpath(__file__))

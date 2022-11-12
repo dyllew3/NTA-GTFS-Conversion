@@ -1,6 +1,6 @@
 import csv
 import unittest
-from .. import gtfs
+from src import gtfs
 from unittest.mock import Mock, patch, mock_open
 
 
