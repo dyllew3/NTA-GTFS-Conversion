@@ -20,14 +20,14 @@ class Download_Tests(unittest.TestCase):
             service = download.DownloadService()
             service.get_if_diff("something")
 
-    @patch('requests.get', side_effect=lambda *args,  **newkeywargs: utils.MockResponse(load_zip_bytes(DIRECTORY + "\\resources\\valid.zip"), 200))
+    @patch('requests.get', side_effect=lambda *args,  **newkeywargs: utils.MockResponse(load_zip_bytes(os.path.join(DIRECTORY, "resources","valid.zip")), 200))
     def test_get_zip(self, mock_get):
         service = download.DownloadService()
         filezip = service.get_if_diff("something")
         self.assertEqual(filezip.filename, None, "Filename be none")
         self.assertIn("trips.txt",[ x.filename for x in filezip.filelist])
 
-    @patch('requests.get', side_effect=lambda *args,  **newkeywargs: utils.MockResponse(load_zip_bytes(DIRECTORY + "\\resources\\valid.zip"), 200))
+    @patch('requests.get', side_effect=lambda *args,  **newkeywargs: utils.MockResponse(load_zip_bytes(os.path.join(DIRECTORY, "resources", "valid.zip")), 200))
     def test_get_zip_no_diff(self, mock_get):
         service = download.DownloadService()
         filezip = service.get_if_diff("something")

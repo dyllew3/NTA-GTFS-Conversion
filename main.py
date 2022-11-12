@@ -20,14 +20,14 @@ def main(args):
     for k in FILE_TO_OBJECT_MAPPINGS:
         if k in files:
             obj_type = FILE_TO_OBJECT_MAPPINGS[k]
-            loaded_obj = load_gtfs_from_file(args[1] + "\\" + k, obj_type)
-            output_file = "".join([output_folder + "\\",  k.replace(".txt", ".json")])
+            loaded_obj = load_gtfs_from_file(os.path.join(args[1], k), obj_type)
+            output_file = os.path.join(output_folder,  k.replace(".txt", ".json"))
             parameters[FILE_TO_PARAMETER_NAME[k]] = loaded_obj
             with open(output_file, 'w') as f:
                 json.dump([x.__dict__ for x in loaded_obj], f)
     connections = connect_route_stops(routes=parameters["routes"], stop_times=parameters["stop_times"],
                         trips=parameters["trips"])
-    with open(output_folder + "./connected.json", 'w') as f:
+    with open(os.path.join(output_folder,"connected.json"), 'w') as f:
         json.dump(connections, f)
 
 

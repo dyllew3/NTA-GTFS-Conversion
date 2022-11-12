@@ -1,6 +1,7 @@
 import io
 import logging
 from typing import Dict
+import os
 import requests
 import zipfile
 
@@ -86,7 +87,7 @@ class DownloadService:
         self.url_to_hash[zip_url] = new_hash
         return zipfile.ZipFile(io.BytesIO(resp.content))
 
-    def extract_if_diff(self, zip_url: str, directory: str = ".\\GTFS") -> bool:
+    def extract_if_diff(self, zip_url: str, directory: str = os.path.join(os.curdir, "GTFS")) -> bool:
         """Download and extract the GTFS files from a zip file at the
         specified url if download differs from previous download.
 
