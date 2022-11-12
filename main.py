@@ -20,8 +20,8 @@ def main(args):
     for k in FILE_TO_OBJECT_MAPPINGS:
         if k in files:
             obj_type = FILE_TO_OBJECT_MAPPINGS[k]
-            loaded_obj = load_gtfs_from_file(args[1] + k, obj_type)
-            output_file = "".join([output_folder,  k.replace(".txt", ".json")])
+            loaded_obj = load_gtfs_from_file(args[1] + "\\" + k, obj_type)
+            output_file = "".join([output_folder + "\\",  k.replace(".txt", ".json")])
             parameters[FILE_TO_PARAMETER_NAME[k]] = loaded_obj
             with open(output_file, 'w') as f:
                 json.dump([x.__dict__ for x in loaded_obj], f)
