@@ -47,5 +47,5 @@ def connect_route_stops(routes: List[Route], stop_times: List[StopTime],
         route_list = [x.__dict__ for x in route_ids[trip.route_id]]
         if len(route_list) > 1:
             logging.warning(f"route list for trip {trip} is bigger than 1")
-        results.append({"stops": trip_stops, "route": route_list[0]})
+        results.append({"stops": trip_stops } | route_list[0])
     return results
