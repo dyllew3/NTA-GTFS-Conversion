@@ -4,7 +4,8 @@ from typing import List, TypeVar
 
 T = TypeVar('T')
 
-STOP_HEADERS = ["stop_id", "stop_name", "stop_lat", "stop_lon"] # Stop csv headers
+STOP_HEADERS = ["stop_id", "stop_name",
+                "stop_lat", "stop_lon"]  # Stop csv headers
 
 # Headers for Route csv
 ROUTE_HEADERS = ["route_id", "agency_id",
@@ -76,7 +77,7 @@ class Route:
 
 class StopTime:
     """Class representing time a particular trip arrives at a stop.
-    
+
     Attributes:
         trip_id:                Trip ID.
         arrival_time:           Arrival time.
@@ -154,7 +155,7 @@ class Trip:
 
 class Agency:
     """Class representing the agency which operates a service.
-    
+
     Attributes:
         agency_id:          Agency id.
         agency_name:        Agency name.
@@ -185,9 +186,45 @@ class Agency:
         self.agency_phone = agency_phone
 
 
+class Calendar:
+    """Class representing the calendar for services"""
+    service_id: str
+    monday: str
+    tuesday: str
+    wednesday: str
+    thursday: str
+    friday: str
+    saturday: str
+    sunday: str
+    start_date: str
+    end_date: str
+
+    def __init__(self, service_id: str = "",
+                 monday: str = "",
+                 tuesday: str = "",
+                 wednesday: str = "",
+                 thursday: str = "",
+                 friday: str = "",
+                 saturday: str = "",
+                 sunday: str = "",
+                 start_date: str = "",
+                 end_date: str = "") -> None:
+        """Constructor"""
+        self.service_id = service_id
+        self.monday = monday
+        self.tuesday = tuesday
+        self.wednesday = wednesday
+        self.thursday = thursday
+        self.friday = friday
+        self.saturday = saturday
+        self.sunday = sunday
+        self.start_date = start_date
+        self.end_date = end_date
+
+
 def load_gtfs_from_file(filename: str, obj_type: T) -> List[T]:
     """Loads the GTFS data from a file into a list of a particular object type i.e. Stop
-    
+
     Parameters:
         filename:   Name of the file should be csv format.
         obj_type:   Type of object should have constructor that takes no parameters.
@@ -216,6 +253,7 @@ def load_gtfs_from_file(filename: str, obj_type: T) -> List[T]:
 
 
 FILE_TO_OBJECT_MAPPINGS = {
+    "calendar.txt": Calendar,
     "stops.txt": Stop,
     "routes.txt": Route,
     "agency.txt": Agency,
@@ -224,6 +262,7 @@ FILE_TO_OBJECT_MAPPINGS = {
 }
 
 FILE_TO_PARAMETER_NAME = {
+    "calendar.txt": "calendar",
     "stops.txt": "stops",
     "routes.txt": "routes",
     "agency.txt": "agency",

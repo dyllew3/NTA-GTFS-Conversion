@@ -37,15 +37,22 @@ def connect_route_stops(routes: List[Route], stop_times: List[StopTime],
 
     Returns:
         List with mappings of route to a given  trip_stops
-        in format {"stops": trip_stops, "route": route} .
+        in format {"stops": trip_stops, "route": route, "service_id": service_id} .
     """
     results = []
     route_ids = group_by("route_id", routes)
     times_by_trip_id = group_by("trip_id", stop_times)
     for trip in trips:
         trip_stops = [x.__dict__ for x in times_by_trip_id[trip.trip_id]]
-        route_list = [x.__dict__ for x in route_ids[trip.route_id]]
+        route_list = []
+        
+        # Check if route id exists in list of routes
+        if trip.route_id not in route_ids:
+            logging.warn(f"Route id {trip.route_id} not present in routes file")
+            route_list.append({})
+        else:
+            route_list = [x.__dict__ for x in route_ids[trip.route_id]]
         if len(route_list) > 1:
             logging.warning(f"route list for trip {trip} is bigger than 1")
-        results.append({"stops": trip_stops } | route_list[0])
+        results.append({"stops": trip_stops, "service_id": trip.service_id } | route_list[0])
     return results
