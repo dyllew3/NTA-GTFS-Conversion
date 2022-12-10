@@ -10,6 +10,7 @@ def load_zip_bytes(filename):
     with open(filename, 'rb') as open_file:
         result = open_file.read()
         return result
+
 class Download_Tests(unittest.TestCase):
     def test_constructor(self):
         download.DownloadService()

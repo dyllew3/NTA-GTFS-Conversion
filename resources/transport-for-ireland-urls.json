@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Bus Eireann(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_buseireann.zip"
+    },
+    {
+        "name": "Irish Rail(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_irishrail.zip"
+    },
+    {
+        "name": "Dublin Bus (GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_dublinbus.zip"
+    },
+    {
+        "name": "LUAS(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_luas.zip"
+    },
+    {
+        "name": "Burkes(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_burkes.zip"
+    },
+    {
+        "name": "Citylink(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_citylink.zip"
+    },
+    {
+        "name": "Collins Coaches(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_collins.zip"
+    },
+    {
+        "name": "Dublin Coach(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_dublincoach.zip"
+    },
+    {
+        "name": "Dublin Express(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_dublinexpress.zip"
+    },
+    {
+        "name": "Express Bus(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_expressbus.zip"
+    },
+    {
+        "name": "Finnegans(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_finnegans.zip"
+    },
+    {
+        "name": "Kilbride(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_mkilbride.zip"
+    },
+    {
+        "name": "McGeehan(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_mcgeehan.zip"
+    },
+    {
+        "name": "Single Route Operators(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_sro.zip"
+    },
+    {
+        "name": "Ferries(GTFS)",
+        "url": "https://www.transportforireland.ie/transitData/google_transit_ferries.zip"
+    }
+]
